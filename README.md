@@ -1,7 +1,9 @@
 # xNNPCD: an interpretable neural network framework for discovering regulators of programmed cell death from integrative perturbation profiles
 
+
 ## Overview
 xNNPCD is an interpretable AI framework designed to decode the regulatory landscape of Programmed Cell Death (PCD). By embedding biological prior knowledge (GO, KEGG, Reactome) into an MLP architecture via a mask matrix, and utilizing an innovative pathway ablation mechanism to refine the mask matrix, xNNPCD dynamically discovers novel gene-pathway associations across apoptosis, autophagy, ferroptosis, necroptosis, and pyroptosis.
+
 
 ## Repository Structure
 ```text
@@ -12,6 +14,7 @@ xNNPCD/
 ├── models/                  # Storage for trained .pth weights
 └── results/                 # Storage for obtained mask matrices and queires from ontological databases
 ```
+
 
 ## Data Availability & Reproducibility
 
@@ -29,6 +32,8 @@ Due to the large file size (~GB scale), the pre-processed Banquet datasets and c
 For simplicity and rapid execution, the heavy raw data preprocessing (which requires extensive metadata matching and large-scale matrix manipulation) has been omitted from this streamlined repository. For full academic transparency, our processed Banquet datasets were originally derived from:
 * **CMap L1000 (LINCS 2020 Release)**: Sourced from the [CLUE.io Data Portal](https://clue.io/data/CMap2020#LINCS2020). This includes the core `.gctx` matrices (`level5_beta_trt_xpr_n142901x12328.gctx` for CRISPR, `level5_beta_trt_cp_n720216x12328.gctx` for drug response), along with their corresponding metadata annotations (e.g., `siginfo`, `cellinfo`).
 * **CRISPR DepMap**: Sourced from the [DepMap Public 24Q2 Release](https://depmap.org/portal/download/). This includes the cell fitness dependency scores (`CRISPRGeneEffect.csv`) and cell line metadata (`Model.csv`).
+* **CTRP v2.0**: The drug sensitivity data were downloaded from the Cancer Therapeutics Response Portal via the [NIH CTD² Data Portal](https://ctd2-data.nci.nih.gov/Public/Broad/CTRPv2.0_2015_ctd2_ExpandedDataset/).
+
 
 ## Environment Setup & Quick Start
 
@@ -37,7 +42,6 @@ To guarantee exact reproducibility, we have locked the package versions to our v
 **Tested Environment:**
 * **Python**: 3.11.9
 * **OS**: Cross-platform compatible (Tested on Linux/macOS)
-
 
 **Installation Steps:**
 We highly recommend using a virtual environment (e.g., `conda` or `venv`) to avoid conflicts with your local packages.
@@ -58,6 +62,7 @@ pip install numpy==1.26.4 pandas==2.2.3 requests==2.32.3 mygene==3.2.2 \
             scikit-learn==1.6.1 torch==2.6.0+cpu
 ```
 Note: If you are running this on a machine with a CUDA-enabled GPU, you may omit the +cpu tag for PyTorch to enable hardware acceleration.
+
 
 ## Execution Flow
 
