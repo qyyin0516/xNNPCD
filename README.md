@@ -1,19 +1,8 @@
-# xNNPCD: an interpretable neural network framework for discovering regulators of programmed cell death from integrative perturbation profiles
+# xNNPCD identifies regulators of programmed cell death by integrating perturbation transcriptomes with cancer dependency profiles
 
 
 ## Overview
 xNNPCD is an interpretable AI framework designed to decode the regulatory landscape of Programmed Cell Death (PCD). By embedding biological prior knowledge (GO, KEGG, Reactome) into an MLP architecture via a mask matrix, and utilizing an innovative pathway ablation mechanism to refine the mask matrix, xNNPCD dynamically discovers novel gene-pathway associations across apoptosis, autophagy, ferroptosis, necroptosis, and pyroptosis.
-
-
-## Repository Structure
-```text
-xNNPCD/
-├── notebook/
-│   └── main_github.ipynb    # Main pipeline
-├── data/                    # Local directory for datasets
-├── models/                  # Storage for trained .pth weights
-└── results/                 # Storage for obtained mask matrices and queires from ontological databases
-```
 
 
 ## Data Availability & Reproducibility
@@ -25,7 +14,7 @@ Public databases (GO, KEGG, Reactome) are subject to frequent updates. To exactl
 
 ### 2. Processed Datasets (Banquet Format)
 Due to the large file size (~GB scale), the pre-processed Banquet datasets and corresponding sample information (for both CRISPR-Cas9 knockout and drug response) are hosted on Zenodo to ensure long-term availability and stable access. The `main_github.ipynb` is explicitly designed to load these processed files, bypassing heavy memory requirements.
-* **Link**: Download from [Zenodo](https://doi.org/10.5281/zenodo.7829597).
+* **Link**: Download from [Zenodo](https://doi.org/10.5281/zenodo.20060140).
 * **Placement**: Download and place all extracted files (the Banquet matrices and the metadata) directly into the `data/` folder.
 
 ### 3. Raw Data Provenance
