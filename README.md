@@ -48,7 +48,7 @@ We highly recommend using a virtual environment (e.g., `conda` or `venv`) to avo
 
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/qyyin0516/xNNPCD.git](https://github.com/qyyin0516/xNNPCD.git)
+git clone https://github.com/qyyin0516/xNNPCD.git
 cd xNNPCD
 
 # 2. Create and activate a virtual environment (Conda example)
@@ -59,14 +59,13 @@ conda activate xnnpcd_env
 pip install numpy==1.26.4 pandas==2.2.3 requests==2.32.3 mygene==3.2.2 \
             biomart==0.9.2 biopython==1.84 cmapPy==4.0.1 \
             matplotlib==3.10.0 seaborn==0.13.2 scipy==1.11.2 \
-            scikit-learn==1.6.1 torch==2.6.0+cpu
+            scikit-learn==1.6.1 torch==2.6.0
 ```
-Note: If you are running this on a machine with a CUDA-enabled GPU, you may omit the +cpu tag for PyTorch to enable hardware acceleration.
 
 
 ## Execution Flow
 
-This repository is designed as a streamlined, "click-and-play" Jupyter Notebook. Once the data is placed in the `data/` folder and the environment is set up, simply run `notebook/main_github.ipynb` sequentially. 
+This repository is designed as a streamlined, "click-and-play" Jupyter Notebook. Once the data is placed in the `data/` folder and the environment is set up, simply run `notebook/main_github.ipynb` sequentially. Note that you must update the `base_dir` variable to match your local absolute path before running.
 
 The notebook executes the following pipeline:
 
@@ -74,3 +73,12 @@ The notebook executes the following pipeline:
 2. **Model Instantiation**: Builds the `MaskedMLP_Regression` network architecture. The first layer is automatically constrained by the mask matrix derived from the biological priors.
 3. **Training & Ablation**: Iteratively trains the network using pre-determined optimal hyperparameters and then applies the pathway ablation mechanism to uncover novel gene-pathway associations.
 4. **Comprehensive Analysis**: Conducts a comprehensive analysis to rigorously validate the xNNPCD framework.
+
+
+## Expected Outputs
+
+Upon successful execution of the notebook, the following artifacts will be generated:
+
+1. **Trained Model Weights**: Saved locally in the `models/` directory, including the core `xNNPCD.pth` as well as weights for the baseline xNN and drug-oriented models.
+2. **Refined Biological Mask**: The dynamically updated gene-pathway association matrix, saved as `results/mask_xNNPCD.csv`.
+3. **Analysis Results**: In-line visualizations and reports of the comprehensive analytical pipeline, including benchmarking, statistical tests, t-SNE visualization, etc.
