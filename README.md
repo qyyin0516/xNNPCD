@@ -1,7 +1,5 @@
 # xNNPCD: an interpretable neural network framework for discovering regulators of programmed cell death from integrative perturbation profiles
 
-
-
 ## Overview
 xNNPCD is an interpretable AI framework designed to decode the regulatory landscape of Programmed Cell Death (PCD). By embedding biological prior knowledge (GO, KEGG, Reactome) into an MLP architecture via a mask matrix, and utilizing an innovative pathway ablation mechanism to refine the mask matrix, xNNPCD dynamically discovers novel gene-pathway associations across apoptosis, autophagy, ferroptosis, necroptosis, and pyroptosis.
 
@@ -17,18 +15,17 @@ xNNPCD/
 
 ## Data Availability & Reproducibility
 
-To ensurereproducibility and account for the high-volume nature of the datasets, we categorize the data into three levels:
+To ensure reproducibility and account for the high-volume nature of the datasets, we categorize the data into three levels:
 
-### 1. Frozen Prior Knowledge (2024 Snapshot)
-Public databases (GO, KEGG, Reactome) are subject to frequent updates. To exactly reproduce the results in our paper, we provide the `gene_pcd.csv` in the `data/` directory. The `main_github.ipynb` is configured to use the frozen file directly.
+### 1. Frozen Prior Knowledge 
+Public databases (GO, KEGG, Reactome) are subject to frequent updates. To exactly reproduce the results in our paper, we provide the `gene_pcd.csv` in the `data/` directory (a frozen 2024 snapshot). The `main_github.ipynb` is configured to use this frozen file directly.
 
 ### 2. Processed Datasets (Banquet Format)
-Due to the large file size (~GB scale), the pre-processed Banquet datasets are hosted on **Zenodo** to ensure long-term availability and stable access. The `main_github.ipynb` is also configured to use the frozen file directly.
-* **Link**: [Download from Zenodo (DOI: 10.5281/zenodo.XXXXX)](#) 
-* **Placement**: Download and place the files into the `data/` folder.
+Due to the large file size (~GB scale), the pre-processed Banquet datasets and corresponding sample information (for both CRISPR-Cas9 knockout and drug response) are hosted on Zenodo to ensure long-term availability and stable access. The `main_github.ipynb` is explicitly designed to load these processed files, bypassing heavy memory requirements.
+* **Link**: Download from [Zenodo](https://doi.org/10.5281/zenodo.7829597).
+* **Placement**: Download and place all extracted files (the Banquet matrices and the metadata) directly into the `data/` folder.
 
-### 3. Raw Multi-Omics Data
-For users wishing to run the full preprocessing pipeline from scratch:
-* **CMap L1000 (Level 5)**: Obtain `*.gctx` and `siginfo` files from the [CLUE.io Data Portal](https://clue.io/data).
-* **CRISPR DepMap**: Obtain `CRISPRGeneEffect.csv` and `Model.csv` from the [DepMap Public Release](https://depmap.org/portal/download/).
-* **Placement**: All raw files should be stored in `data/raw_data/`.
+### 3. Raw Data Provenance
+For simplicity and rapid execution, the heavy raw data preprocessing (which requires extensive metadata matching and large-scale matrix manipulation) has been omitted from this streamlined repository. For full academic transparency, our processed Banquet datasets were originally derived from:
+* **CMap L1000 (LINCS 2020 Release)**: Sourced from the [CLUE.io Data Portal](https://clue.io/data/CMap2020#LINCS2020). This includes the core `.gctx` matrices (`level5_beta_trt_xpr_n142901x12328.gctx` for CRISPR, `level5_beta_trt_cp_n720216x12328.gctx` for drug response), along with their corresponding metadata annotations (e.g., `siginfo`, `cellinfo`).
+* **CRISPR DepMap**: Sourced from the [DepMap Public 24Q2 Release](https://depmap.org/portal/download/). This includes the cell fitness dependency scores (`CRISPRGeneEffect.csv`) and cell line metadata (`Model.csv`).
