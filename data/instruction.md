@@ -1,0 +1,1 @@
+Due to the significant volume of the data (~GB scale), the pre-processed Banquet datasets and sample information have been deposited on Zenodo to ensure long-term archival and stable access. To execute `main_github.ipynb`, please download the files via https://doi.org/10.5281/zenodo.20060140 and place them in the `data/` directory.
