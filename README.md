@@ -4,6 +4,24 @@
 ## Overview
 xNNPCD is an interpretable AI framework designed to decode the regulatory landscape of Programmed Cell Death (PCD). By embedding biological prior knowledge (GO, KEGG, Reactome) into an MLP architecture via a mask matrix, and utilizing an innovative pathway ablation mechanism to refine the mask matrix, xNNPCD dynamically discovers novel gene-pathway associations across apoptosis, autophagy, ferroptosis, necroptosis, and pyroptosis.
 
+## Repository Structure
+```text
+xNNPCD/
+├── data/
+│   └── instruction.md            # Instructions for downloading the Banquet datasets
+├── models/
+│   ├── xNNPCD.pth                # Pre-trained weights for the core xNNPCD model
+│   ├── xNN.pth                   # Weights for the baseline xNN model
+│   ├── drug.pth                  # Weights for the drug-oriented predictive model
+│   └── drug_no_transfer.pth      # Weights for the drug model without transfer learning
+├── notebook/
+│   └── main_github.ipynb         # Streamlined pipeline for training and analysis
+├── results/
+│   ├── gene_pcd.csv              # Frozen biological priors
+│   ├── mask_original.csv         # Initial binarized gene-pathway mask
+│   └── mask_new.csv              # Final refined gene-pathway association matrix
+└── README.md
+```
 
 ## Data Availability & Reproducibility
 
