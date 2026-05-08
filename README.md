@@ -63,11 +63,12 @@ conda create -n xnnpcd_env python=3.11.9 -y
 conda activate xnnpcd_env
 
 # 3. Install the exact dependencies
-pip install numpy==1.26.4 pandas==2.2.3 requests==2.32.3 mygene==3.2.2 \
-            biomart==0.9.2 biopython==1.84 cmapPy==4.0.1 \
+pip install numpy==1.26.4 pandas==2.2.3 requests==2.32.3 pyarrow==19.0.1 \
+            mygene==3.2.2 biomart==0.9.2 biopython==1.84 cmapPy==4.0.1 \
             matplotlib==3.10.0 seaborn==0.13.2 scipy==1.11.2 \
             scikit-learn==1.6.1 torch==2.6.0
 ```
+Note: For machines without a GPU, please install the CPU-only version of PyTorch by running: `pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu`.
 
 
 ## Execution Flow
